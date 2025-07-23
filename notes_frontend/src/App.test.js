@@ -1,8 +1,14 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders Notes sidebar heading', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const heading = screen.getByText(/Notes/i);
+  expect(heading).toBeInTheDocument();
+});
+
+test('new note button exists', () => {
+  render(<App />);
+  const newNoteBtn = screen.getByRole('button', { name: /\+/ });
+  expect(newNoteBtn).toBeInTheDocument();
 });
